@@ -1,0 +1,104 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Acrilicos 1000 &#124; Acridise&ntilde;os  P&aacute;gina Principal</title>
+
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<!-- 	<link rel="stylesheet" href="{% static 'css/custom.css' %}"> -->
+	<link rel="stylesheet" href="{% static 'css/jquery.bxslider.css' %}">
+
+	<style>
+
+	body{
+		background: rgba(32,49,59,0.3);
+		overflow:hidden;
+		border-radius: 10px; 
+	}
+
+	.row, .col-md-12{
+		border-radius: 10px;
+	}
+
+	.img-responsive{    	
+	margin: auto;
+	}
+
+	.bxslider{
+		background: rgba(32,49,59,0.3);
+		border-radius: 10px;
+	}
+
+	.bxslider li{
+		background: rgba(32,49,59,0.3);
+		padding: 0px;
+	}
+
+	.bxslider li img{
+		background: rgba(32,49,59,0.3);
+	}
+
+	.img-project{
+		max-height:83%;
+		margin-top: 5%;
+		margin-bottom: 5%;
+	}
+	
+
+	</style>
+
+
+</head>
+<body>
+	<div class="row">
+		<div class="col-md-12">			
+			<ul class="bxslider">
+			{% for imagenproyecto in proyecto.imagenes_del_proyecto.all %}
+			  <li><img class="img-responsive img-project" src="{{ imagenproyecto.imagen.url }}"></li>			 
+			{% endfor %}
+			</ul>			
+	</div>
+	
+	
+
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  	
+  	<script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+	
+	<script>
+
+
+    $(document).ready(function(){
+      $('.bxslider').bxSlider(
+        {
+            controls: true,
+            mode: "horizontal",
+            auto: true,
+            autoHover: true,
+            pager:false,
+            captions: true,
+            preloadImages: true,                
+        }
+      );
+    });
+
+	</script>
+
+	<!-- <script>
+	
+		$(document).on('ready', function(){
+			var wImg = $('.img-project').css('width')
+			var hImg = $('.img-project').css('height')
+	
+			if(hImg>wImg){
+				$('.img-project').css('max-height', (60)+"%")
+			}
+		})
+	
+	</script> -->
+
+	
+  	
+</body>
+</html>
+
